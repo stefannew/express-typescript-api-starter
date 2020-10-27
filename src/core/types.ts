@@ -9,12 +9,15 @@ export type Services = {
 
 export type Controller = (services: Services) => (request: Request, response: Response, next: NextFunction) => void;
 
-export type Config = {
-  api: {
-    port: number;
-  },
-  database: {
-    type: 'postgres';
-    name: string;
-  }
+export type Environment = {
+  DATABASE_NAME: string;
+  DATABASE_PASSWORD: string;
+  DATABASE_TYPE: 'postgres',
+  DATABASE_USER: string;
+  PORT: string;
+};
+
+export type DatabaseConfig = {
+  type: Environment['DATABASE_TYPE'],
+  name: Environment['DATABASE_NAME']
 }

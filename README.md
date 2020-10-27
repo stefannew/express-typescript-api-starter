@@ -3,20 +3,15 @@
 ## Getting started
 
   - Clone this repo
-  - Set the name of the API in package.json `name` field
-  - Create an .rc file matching the name of package.json `name` field
-    with the following schema:
+  - Create an .env with the following schema:
 
     ```
-    {
-      "api": {
-        "port": 3000
-      },
-      "database": {
-        "type": "postgres",
-        "name": "api"
-      }
-    }
+    DATABASE_NAME=
+    DATABASE_USER=
+    DATABASE_PASSWORD=
+    DATABASE_TYPE=
+    DATABASE_PORT=
+    PORT=
     ```
 
   - `npm install`

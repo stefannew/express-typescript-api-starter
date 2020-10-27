@@ -1,8 +1,8 @@
-import { Connection, createConnection } from 'typeorm';
+import { createConnection } from 'typeorm';
 
-import { Config } from './types';
+import { DatabaseConfig } from './types';
 
-export const createDatabaseConnection = async (config: Config) => await createConnection({
-  type: config.database.type,
-  name: config.database.name
+export const createDatabaseConnection = async (config: DatabaseConfig) => await createConnection({
+  type: config.type,
+  name: config.name
 });
