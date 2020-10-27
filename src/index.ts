@@ -1,10 +1,17 @@
-import * as Express from 'express';
+import Express from 'express';
 
-import { router } from './core/router';
+import { config } from './core/config';
+import { createDatabaseConnection } from './core/database';
+import { createApiRouter } from './core/router';
+import { createServices } from './core/services';
 
-const PORT = 3000;
+const init = async () => {
+  const api = Express();
+  const connection = await createDatabaseConnection(config);
+  const services = createServices(connection);
 
-const api = Express();
+  api.use(createApiRouter(services));
+  api.listen(config.api.port, () => console.log(`${process.env.name} listening on port ${config.api.port}`));
+}
 
-api.use(router);
-api.listen(PORT, () => console.log(`API listnening on port ${PORT}`));
+init();

@@ -1,6 +1,20 @@
 import { NextFunction, Request, Response } from 'express';
+import { ConnectionOptions, Repository } from 'typeorm';
 
-export type Requester<Params, Response> = (params: Params) => PromiseLike<Response>;
-export type Transformer<Response, Result> = (response: Response) => Result;
-export type Service<Params, Result> = (params: Params) => PromiseLike<Result>;
-export type Controller<Services extends Service<any, any>[]> = (...services: Services) => (request: Request, response: Response, next: NextFunction) => void;
+import { User } from './entities/User';
+
+export type Services = {
+  usersRepository: Repository<User>
+};
+
+export type Controller = (services: Services) => (request: Request, response: Response, next: NextFunction) => void;
+
+export type Config = {
+  api: {
+    port: number;
+  },
+  database: {
+    type: 'postgres';
+    name: string;
+  }
+}

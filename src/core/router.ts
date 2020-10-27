@@ -1,7 +1,12 @@
 import { Router } from 'express';
 
-import { router as usersRouter } from '../modules/users';
+import { createUsersRouter } from '../modules/users';
+import { Services } from './types';
 
-export const router = Router();
+export const createApiRouter = (services: Services) => {
+  const router = Router();
+  
+  router.use('/users', createUsersRouter(services));
 
-router.use('/users', usersRouter);
+  return router;
+}

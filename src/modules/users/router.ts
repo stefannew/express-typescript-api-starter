@@ -1,8 +1,12 @@
 import { Router } from 'express';
+import { Services } from '../../core/types';
 
 import { getUsersController } from './controllers';
-import { getUsers, anotherService } from './services';
 
-export const router = Router();
-
-router.get('/', getUsersController(getUsers, anotherService));
+export const createUsersRouter = (services: Services) => {
+  const router = Router();
+  
+  router.get('/', getUsersController(services));
+  
+  return router;
+}
