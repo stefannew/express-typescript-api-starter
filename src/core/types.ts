@@ -12,12 +12,23 @@ export type Controller = (services: Services) => (request: Request, response: Re
 export type Environment = {
   DATABASE_NAME: string;
   DATABASE_PASSWORD: string;
-  DATABASE_TYPE: 'postgres',
+  DATABASE_PORT: string;
+  DATABASE_TYPE: ConnectionOptions['type'];
   DATABASE_USER: string;
   PORT: string;
 };
 
-export type DatabaseConfig = {
+type DatabaseConfig = {
   type: Environment['DATABASE_TYPE'],
-  name: Environment['DATABASE_NAME']
+  name: Environment['DATABASE_NAME'],
+  password: Environment['DATABASE_PASSWORD']
+  port: Environment['DATABASE_PORT'],
+  username: Environment['DATABASE_USER']
+}
+
+export type Config = {
+  database: DatabaseConfig;
+  api: {
+    port: string;
+  }
 }

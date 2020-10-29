@@ -1,7 +1,7 @@
 {
   "name": "api-starter",
   "version": "0.0.1",
-  "description": "Typescript/Express API Boilerplate with DI",
+  "description": "Typescript/Express API Starter",
   "main": "index.js",
   "author": "Stefan New",
   "license": "MIT",
@@ -9,15 +9,18 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "pg": "^8.4.2",
-    "typeorm": "^0.2.28",
-    "typescript": "^3.8.3"
+    "typeorm": "^0.2.28"
   },
   "scripts": {
     "build": "tsc",
-    "dev": "node ./build/index.js"
+    "start": "node build/index.js",
+    "dev": "nodemon src/index.ts"
   },
   "devDependencies": {
     "@types/express": "^4.17.8",
-    "@types/node": "^14.11.8"
+    "@types/node": "^14.11.8",
+    "nodemon": "^2.0.6",
+    "ts-node": "^9.0.0",
+    "typescript": "^3.8.3"
   }
 }
